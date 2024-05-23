@@ -1,10 +1,16 @@
+import 'package:advflutterch_3/Screens/InAppWebView(lec-2)/Proivider/inAppWebView_Provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'Screens/connectivity_plus(lec-1)/views/MainScreen.dart';
 
-void main()
-{
-  runApp(MyApp());
+void main() {
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => MainProvider(),)
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ConnetivityScreen(),
     );

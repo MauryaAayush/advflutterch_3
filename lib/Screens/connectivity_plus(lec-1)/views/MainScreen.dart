@@ -7,44 +7,30 @@ class ConnetivityScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF7F7F7),
+      backgroundColor: const Color(0xFFF7F7F7),
       body: StreamBuilder(
-        stream: Connectivity().onConnectivityChanged,
-        builder: (context, snapshot) {
-          // Handle the waiting state
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          // Handle any errors
-          if (snapshot.hasError) {
-            return const Center(child: Text('Error fetching connectivity status'));
-          }
-
-          // Ensure we have data before accessing it
-          if (!snapshot.hasData) {
-            return const Center(child: Text('No connectivity data available'));
-          }
-
-          // Determine the connectivity result
-          final result = snapshot.data;
-          if (result == ConnectivityResult.mobile) {
-            return const Center(child: Text('Mobile connected to internet'));
-          } else if (result == ConnectivityResult.wifi) {
-            return const Center(child: Text('Mobile connected to Wifi'));
-          } else {
-            return Container(
-              height: 500,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/gifs/giphy.gif'),
+          stream: Connectivity().onConnectivityChanged,
+          builder: (context, snapshot) {
+            if (snapshot.data!.contains(ConnectivityResult.mobile)) {
+              return  const Center(child: Text('Mobile is connected to Mobile Data'));
+            } else if (snapshot.data!.contains(ConnectivityResult.wifi)) {
+              return  Center(child: Text('Mobile is connected to Wifi'));
+            } else {
+              return Center(
+                child: Container(
+                  height: 350,
+                  width: 450,
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('assets/gifs/giphy.gif'),
+                    ),
+                  ),
                 ),
-              ),
-            );
-          }
-        },
-      ),
+              );
+            }
+          }),
     );
   }
 }
