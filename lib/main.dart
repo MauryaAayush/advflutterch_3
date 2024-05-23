@@ -2,6 +2,7 @@ import 'package:advflutterch_3/Screens/InAppWebView(lec-2)/Proivider/inAppWebVie
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'Screens/InAppWebView(lec-2)/views/InAppWebView.dart';
 import 'Screens/connectivity_plus(lec-1)/views/MainScreen.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ConnetivityScreen(),
+      home: InAppWebViewScreen(),
     );
   }
 }
