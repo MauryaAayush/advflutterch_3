@@ -5,6 +5,15 @@
 <h3 align="center"><i>connectivity_plus package</i></h3>
 
 ## About : 
+* The connectivity_plus package in Flutter enables checking network connectivity status and listening for changes, indicating whether the device is connected via WiFi, mobile data, or has no internet connection.
+* Install by adding connectivity_plus to pubspec.yaml and use methods like checkConnectivity and onConnectivityChanged to manage connectivity states.
+
+## Features : 
+* Check Connectivity Status: Determine if the device is connected to WiFi, mobile data, or has no connection using checkConnectivity.
+* Listen for Connectivity Changes: React to changes in network status with the onConnectivityChanged stream.
+* Cross-Platform Support: Works on both Android and iOS platforms.
+* Network Type Detection: Identify the type of network connection (WiFi or mobile).
+* User-Friendly Integration: Easy to integrate into Flutter applications with straightforward API.
 
 
 ## Code :
