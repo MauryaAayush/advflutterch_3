@@ -1,8 +1,11 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class InAppWebViewScreen extends StatelessWidget {
-  const InAppWebViewScreen({super.key});
+   InAppWebViewScreen({super.key});
+
+late InAppWebViewController inAppWebViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,15 @@ class InAppWebViewScreen extends StatelessWidget {
           stream: Connectivity().onConnectivityChanged,
           builder: (context, snapshot) {
             if ( snapshot.data!.contains(ConnectivityResult.mobile)  || snapshot.data!.contains(ConnectivityResult.wifi)) {
-              return  const Center(child: Text('Mobile is connected to Internet'));
+              return InAppWebView(
+                initialUrlRequest: URLRequest(
+                  url: WebUri('https://www.google.com/'),
+                ),
+
+                // onWebViewCreated: (controller) {
+                //
+                // },
+              );
             } else {
               return Center(
                 child: Container(
