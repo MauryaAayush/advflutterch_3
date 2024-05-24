@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MainProvider extends ChangeNotifier
 {
   double progress = 0;
-  String searchtext = '';
+  String searchtext = 'Google';
 
   void onchange_progress(int progress)
   {
