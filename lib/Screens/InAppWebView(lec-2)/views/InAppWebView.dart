@@ -46,7 +46,6 @@ class InAppWebViewScreen extends StatelessWidget {
             if (snapshot.data!.contains(ConnectivityResult.mobile) ||
                 snapshot.data!.contains(ConnectivityResult.wifi)) {
               return Stack(
-                children: [
                   InAppWebView(
                     initialUrlRequest: URLRequest(
                       url: WebUri('https://www.google.com/search?q= ${Provider.of<MainProvider>(context,listen: false).searchtext} &sca_esv=2358ec6357e7f4b8&sca_upv=1&sxsrf=ADLYWIIskdPoVtrMe3x9OTJOiDDBhSiqKA%3A1716531975549&ei=BzNQZsqGIcfd2roPxumH2AE&oq=flutter+a&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWZsdXR0ZXIgYSoCCAEyCxAAGIAEGJECGIoFMg4QABiABBiRAhixAxiKBTILEAAYgAQYsQMYgwEyDRAAGIAEGLEDGBQYhwIyCxAAGIAEGJECGIoFMgsQABiABBixAxiDATIOEAAYgAQYkQIYsQMYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgARIni9QqAlY1hxwAXgBkAEAmAHMAaAB3QKqAQUwLjEuMbgBA8gBAPgBAZgCA6AC6gLCAgcQIxiwAxgnwgIKEAAYsAMY1gQYR8ICBBAjGCfCAgoQIxiABBgnGIoFwgIIEAAYgAQYsQOYAwCIBgGQBgqSBwUxLjEuMaAHyw4&sclient=gws-wiz-serp'),
@@ -59,9 +58,12 @@ class InAppWebViewScreen extends StatelessWidget {
                     },),
                   (Provider.of<MainProvider>(context,listen: true).progress < 1) ?
 
-                  LinearProgressIndicator(
-                    color: Colors.red,
-                    value: Provider.of<MainProvider>(context,listen: true).progress,
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: LinearProgressIndicator(
+                      color: Colors.grey,
+                      value: Provider.of<MainProvider>(context,listen: true).progress,
+                    ),
                   )
                       :Container(),
                 ],
