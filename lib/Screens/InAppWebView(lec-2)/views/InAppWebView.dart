@@ -23,13 +23,17 @@ class InAppWebViewScreen extends StatelessWidget {
               controller: txtsearch,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.error_outline),
-                  suffixIcon: IconButton(onPressed: () {
-                    Provider.of<MainProvider>(context,listen: false).search(txtsearch.text);
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        Provider.of<MainProvider>(context, listen: false)
+                            .search(txtsearch.text);
 
-                    inAppWebViewController.loadUrl(urlRequest: URLRequest(
-                      url: WebUri('https://www.google.com/search?q=   ${Provider.of<MainProvider>(context,listen: false).searchtext}  &sca_esv=2358ec6357e7f4b8&sca_upv=1&sxsrf=ADLYWIIskdPoVtrMe3x9OTJOiDDBhSiqKA%3A1716531975549&ei=BzNQZsqGIcfd2roPxumH2AE&oq=flutter+a&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWZsdXR0ZXIgYSoCCAEyCxAAGIAEGJECGIoFMg4QABiABBiRAhixAxiKBTILEAAYgAQYsQMYgwEyDRAAGIAEGLEDGBQYhwIyCxAAGIAEGJECGIoFMgsQABiABBixAxiDATIOEAAYgAQYkQIYsQMYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgARIni9QqAlY1hxwAXgBkAEAmAHMAaAB3QKqAQUwLjEuMbgBA8gBAPgBAZgCA6AC6gLCAgcQIxiwAxgnwgIKEAAYsAMY1gQYR8ICBBAjGCfCAgoQIxiABBgnGIoFwgIIEAAYgAQYsQOYAwCIBgGQBgqSBwUxLjEuMaAHyw4&sclient=gws-wiz-serp')
-                    ));
-                  }, icon: Icon(Icons.find_replace_outlined)),
+                        inAppWebViewController.loadUrl(
+                            urlRequest: URLRequest(
+                                url: WebUri(
+                                    'https://www.google.com/search?q=   ${Provider.of<MainProvider>(context, listen: false).searchtext}  &sca_esv=2358ec6357e7f4b8&sca_upv=1&sxsrf=ADLYWIIskdPoVtrMe3x9OTJOiDDBhSiqKA%3A1716531975549&ei=BzNQZsqGIcfd2roPxumH2AE&oq=flutter+a&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWZsdXR0ZXIgYSoCCAEyCxAAGIAEGJECGIoFMg4QABiABBiRAhixAxiKBTILEAAYgAQYsQMYgwEyDRAAGIAEGLEDGBQYhwIyCxAAGIAEGJECGIoFMgsQABiABBixAxiDATIOEAAYgAQYkQIYsQMYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgARIni9QqAlY1hxwAXgBkAEAmAHMAaAB3QKqAQUwLjEuMbgBA8gBAPgBAZgCA6AC6gLCAgcQIxiwAxgnwgIKEAAYsAMY1gQYR8ICBBAjGCfCAgoQIxiABBgnGIoFwgIIEAAYgAQYsQOYAwCIBgGQBgqSBwUxLjEuMaAHyw4&sclient=gws-wiz-serp')));
+                      },
+                      icon: Icon(Icons.find_replace_outlined)),
                   hintText: 'Search or type URL',
                   fillColor: Colors.white,
                   filled: true,
@@ -40,32 +44,38 @@ class InAppWebViewScreen extends StatelessWidget {
           ),
         ),
       ),
-      body:  StreamBuilder(
+      body: StreamBuilder(
           stream: Connectivity().onConnectivityChanged,
           builder: (context, snapshot) {
             if (snapshot.data!.contains(ConnectivityResult.mobile) ||
                 snapshot.data!.contains(ConnectivityResult.wifi)) {
               return Stack(
+                children: [
                   InAppWebView(
                     initialUrlRequest: URLRequest(
-                      url: WebUri('https://www.google.com/search?q= ${Provider.of<MainProvider>(context,listen: false).searchtext} &sca_esv=2358ec6357e7f4b8&sca_upv=1&sxsrf=ADLYWIIskdPoVtrMe3x9OTJOiDDBhSiqKA%3A1716531975549&ei=BzNQZsqGIcfd2roPxumH2AE&oq=flutter+a&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWZsdXR0ZXIgYSoCCAEyCxAAGIAEGJECGIoFMg4QABiABBiRAhixAxiKBTILEAAYgAQYsQMYgwEyDRAAGIAEGLEDGBQYhwIyCxAAGIAEGJECGIoFMgsQABiABBixAxiDATIOEAAYgAQYkQIYsQMYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgARIni9QqAlY1hxwAXgBkAEAmAHMAaAB3QKqAQUwLjEuMbgBA8gBAPgBAZgCA6AC6gLCAgcQIxiwAxgnwgIKEAAYsAMY1gQYR8ICBBAjGCfCAgoQIxiABBgnGIoFwgIIEAAYgAQYsQOYAwCIBgGQBgqSBwUxLjEuMaAHyw4&sclient=gws-wiz-serp'),
+                      url: WebUri(
+                          'https://www.google.com/search?q= ${Provider.of<MainProvider>(context, listen: false).searchtext} &sca_esv=2358ec6357e7f4b8&sca_upv=1&sxsrf=ADLYWIIskdPoVtrMe3x9OTJOiDDBhSiqKA%3A1716531975549&ei=BzNQZsqGIcfd2roPxumH2AE&oq=flutter+a&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWZsdXR0ZXIgYSoCCAEyCxAAGIAEGJECGIoFMg4QABiABBiRAhixAxiKBTILEAAYgAQYsQMYgwEyDRAAGIAEGLEDGBQYhwIyCxAAGIAEGJECGIoFMgsQABiABBixAxiDATIOEAAYgAQYkQIYsQMYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgARIni9QqAlY1hxwAXgBkAEAmAHMAaAB3QKqAQUwLjEuMbgBA8gBAPgBAZgCA6AC6gLCAgcQIxiwAxgnwgIKEAAYsAMY1gQYR8ICBBAjGCfCAgoQIxiABBgnGIoFwgIIEAAYgAQYsQOYAwCIBgGQBgqSBwUxLjEuMaAHyw4&sclient=gws-wiz-serp'),
                     ),
                     onWebViewCreated: (controller) {
                       inAppWebViewController = controller;
                     },
                     onProgressChanged: (controller, progress) {
-                      Provider.of<MainProvider>(context,listen: false).onchange_progress(progress);
-                    },),
-                  (Provider.of<MainProvider>(context,listen: true).progress < 1) ?
-
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: LinearProgressIndicator(
-                      color: Colors.grey,
-                      value: Provider.of<MainProvider>(context,listen: true).progress,
-                    ),
-                  )
-                      :Container(),
+                      Provider.of<MainProvider>(context, listen: false)
+                          .onchange_progress(progress);
+                    },
+                  ),
+                  (Provider.of<MainProvider>(context, listen: true).progress <
+                          1)
+                      ? Align(
+                          alignment: Alignment.topCenter,
+                          child: LinearProgressIndicator(
+                            color: Colors.grey,
+                            value:
+                                Provider.of<MainProvider>(context, listen: true)
+                                    .progress,
+                          ),
+                        )
+                      : Container(),
                 ],
               );
             } else {
@@ -84,8 +94,7 @@ class InAppWebViewScreen extends StatelessWidget {
               );
             }
           }),
-
-              bottomNavigationBar: Container(
+      bottomNavigationBar: Container(
         color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
